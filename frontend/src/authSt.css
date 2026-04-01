@@ -1,0 +1,76 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: url('../img/train.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal {
+      position: relative;
+      background: #111;
+      padding: 30px;
+      border-radius: 16px;
+      width: 494px;
+      height: 324px;
+      z-index: 1;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .modal h1 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 36px;
+    }
+
+    .input {
+      width: 386px;
+      height: 59px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: #333;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .input::placeholder {
+      color: #aaa;
+    }
+
+    .btn {
+      width: 386px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: red;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 5px;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+      transform: scale(1.02);
+    }
