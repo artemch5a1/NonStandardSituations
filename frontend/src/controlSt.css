@@ -1,0 +1,84 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: #1b1b1b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .header {
+      color: #fff;
+      font-size: 32px;
+      margin-bottom: 72px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 120px;
+      gap: 10px;
+    }
+
+    .section-title {
+      grid-column: span 1;
+      background: red;
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .section-help {
+      background: red;
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .row {
+      display: contents;
+    }
+
+    .cell {
+      background: #333;
+      padding: 12px;
+      border-radius: 8px;
+      color: #ddd;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .key {
+      justify-content: center;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .slider {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    .value {
+      text-align: center;
+      color: #fff;
+    }
