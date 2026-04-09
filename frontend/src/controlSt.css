@@ -1,84 +1,82 @@
-* {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+/* control.css - только для компонента Control */
+.control-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-    body {
-      height: 100vh;
-      background: #1b1b1b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.control-header {
+  color: #fff;
+  font-size: 32px;
+  margin-bottom: 72px;
+}
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-    }
+.control-grid {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 10px;
+}
 
-    .header {
-      color: #fff;
-      font-size: 32px;
-      margin-bottom: 72px;
-    }
+.control-section-title {
+  background: red;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 120px;
-      gap: 10px;
-    }
+.control-section-help {
+  background: red;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 13px;
+}
 
-    .section-title {
-      grid-column: span 1;
-      background: red;
-      color: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 14px;
-    }
+.control-cell {
+  background: #333;
+  padding: 12px;
+  border-radius: 8px;
+  color: #ddd;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-    .section-help {
-      background: red;
-      color: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      text-align: center;
-      font-size: 13px;
-    }
+.control-cell-key {
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
 
-    .row {
-      display: contents;
-    }
+.control-cell-value {
+  text-align: center;
+  color: #fff;
+  justify-content: center;
+}
 
-    .cell {
-      background: #333;
-      padding: 12px;
-      border-radius: 8px;
-      color: #ddd;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+.control-btn-back {
+  width: 200px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 10px;
+  background: red;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
-    .key {
-      justify-content: center;
-      font-weight: bold;
-      color: #fff;
-    }
+.control-btn-back:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
 
-    .slider {
-      width: 100%;
-      margin-top: 5px;
-    }
-
-    input[type="range"] {
-      width: 100%;
-    }
-
-    .value {
-      text-align: center;
-      color: #fff;
-    }
+.control-container input[type="range"] {
+  width: 100%;
+  margin-left: 10px;
+}

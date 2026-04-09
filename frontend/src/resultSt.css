@@ -1,36 +1,63 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  height: 100vh;
-  background: #1b1b1b;
-  margin: 0;
-}
-
-/* Контейнер — увеличен максимальная ширина */
-.container {
-  width: 95%;
+/* results.css - только для компонента Results */
+.results-container {
+  width: 100%;
   max-width: 1600px;
   margin: 0 auto;
   padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.header {
+/* Обертка для заголовка и стрелки */
+.results-header-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 41px;
+  flex-shrink: 0;
+}
+
+/* Кнопка-стрелка назад */
+.results-back-arrow {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 40px;
+  cursor: pointer;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: 0.2s;
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.results-back-arrow:hover {
+  background: rgba(255, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.results-header {
   color: #fff;
   font-size: 32px;
-  margin-bottom: 41px;
+  margin: 0;
+  flex-shrink: 0;
 }
 
-.search {
+.results-search {
   margin-bottom: 47px;
+  flex-shrink: 0;
 }
 
-.search input {
-  width: 547px;
+.results-search input {
+  width: 100%;
+  max-width: 547px;
   padding: 10px;
   border-radius: 8px;
   border: none;
@@ -38,90 +65,90 @@ body {
   color: #fff;
 }
 
-/* Заголовок таблицы */
-.table-header {
-  display: flex;
+/* Делаем таблицу адаптивной - убираем фиксированные ширины */
+.results-table-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 0.8fr 0.8fr 0.8fr;
   gap: 11px;
   margin-bottom: 11px;
+  flex-shrink: 0;
 }
 
-.table-header > div {
+.results-table-header > div {
   background: red;
   padding: 10px;
   border-radius: 8px;
   color: #fff;
   font-size: 13px;
-  
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-/* Увеличенная ширина столбцов */
-.table-header > div:nth-child(1) { width: 220px; }  /* ФИО ученика — увеличено */
-.table-header > div:nth-child(2) { width: 500px; }  /* Название сессии — увеличено */
-.table-header > div:nth-child(3) { width: 100px; }  /* Время — увеличено */
-.table-header > div:nth-child(4) { width: 120px; }  /* Баллы — увеличено */
-.table-header > div:nth-child(5) { width: 180px; }  /* Заполненные бланки — увеличено */
-
-/* Тело таблицы со скроллом */
-.table-body {
-  max-height: 400px;
-  overflow-y: auto;
+/* Контейнер без скролла */
+.results-table-body {
   display: flex;
   flex-direction: column;
   gap: 11px;
-  padding-right: 5px;
+  flex: 1;
 }
 
-/* Строка таблицы */
-.row {
-  display: flex;
+.results-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 0.8fr 0.8fr 0.8fr;
   gap: 11px;
+  flex-shrink: 0;
 }
 
-.row > div {
+.results-row > div {
   background: #333;
   padding: 12px;
   border-radius: 8px;
   color: #ddd;
   font-size: 13px;
-  
   display: flex;
   align-items: center;
   transition: 0.2s;
+  word-break: break-word;
+  white-space: normal;
 }
 
-.row:hover > div {
+.results-row:hover > div {
   background: #3d3d3d;
 }
 
-/* Увеличенная ширина столбцов строк */
-.row > div:nth-child(1) { width: 220px; }  /* ФИО ученика */
-.row > div:nth-child(2) { width: 500px; }  /* Название сессии */
-.row > div:nth-child(3) { width: 100px; }  /* Время */
-.row > div:nth-child(4) { width: 120px; }  /* Баллы */
-.row > div:nth-child(5) { 
-  width: 180px;
+.results-icon {
   justify-content: center;
-}
-
-.icon {
-  text-align: center;
   font-size: 18px;
 }
 
-/* Scrollbar */
-.table-body::-webkit-scrollbar {
-  width: 6px;
-}
-
-.table-body::-webkit-scrollbar-thumb {
-  background: red;
-  border-radius: 10px;
-}
-
-.table-body::-webkit-scrollbar-track {
-  background: transparent;
+/* Для маленьких экранов */
+@media (max-width: 768px) {
+  .results-back-arrow {
+    font-size: 32px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .results-header {
+    font-size: 24px;
+  }
+  
+  .results-header-wrapper {
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .results-table-header,
+  .results-row {
+    grid-template-columns: 1fr 1.5fr 0.6fr 0.6fr 0.6fr;
+    gap: 8px;
+  }
+  
+  .results-table-header > div,
+  .results-row > div {
+    padding: 8px;
+    font-size: 11px;
+  }
 }

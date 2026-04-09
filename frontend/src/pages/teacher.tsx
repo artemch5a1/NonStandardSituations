@@ -1,44 +1,88 @@
 import { useState } from "react";
-import "../authSt.css";
+import "../teacher.css";
+import { api } from "../services/api";
 
 type Props = {
-  onSuccess: () => void;
-  onBack: () => void;
+    onSuccess: () => void;
+    onBack: () => void;
 };
 
-const Teacher = ({ onSuccess }: Props) => {
-  const [password, setPassword] = useState("");
+const Teacher = ({ onSuccess, onBack }: Props) => {
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
-  const handleLogin = () => {
-    // временная проверка пароля
-    if (password === "1234") {
-      onSuccess();
-    } else {
-      alert("Неверный пароль");
-    }
-  };
+    const handleLogin = async () => {
+        if (!password) {
+            setError("Введите пароль");
+            return;
+        }
 
-  return (
-    <>
-      <div className="overlay"></div>
+        setError("");
+        setLoading(true);
 
-      <div className="modal">
-        <h1>Вход</h1>
+        try {
+            const response = await api.teacherLogin(password);
+            
+            if (response.success) {
+                onSuccess();
+            } else {
+                setError(response.message || "Неверный пароль");
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+            setError("Ошибка соединения с сервером");
+        } finally {
+            setLoading(false);
+        }
+    };
 
-        <input
-          className="input"
-          type="password"
-          placeholder="Пароль..."
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+    const handleKeyPress = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            handleLogin();
+        }
+    };
 
-        <button className="btn" onClick={handleLogin}>
-          Продолжить
-        </button>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className="teacher-overlay"></div>
+            <div className="teacher-modal">
+                <h1 className="teacher-title">Вход</h1>
+                
+                <input
+                    className="teacher-input"
+                    type="password"
+                    placeholder="Пароль..."
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    autoFocus
+                />
+                
+                {error && (
+                    <div style={{ color: 'red', marginBottom: '10px', fontSize: '14px' }}>
+                        {error}
+                    </div>
+                )}
+                
+                <button 
+                    className="teacher-btn" 
+                    onClick={handleLogin} 
+                    disabled={loading}
+                >
+                    {loading ? "Проверка..." : "Продолжить"}
+                </button>
+                
+                <button 
+                    className="teacher-btn-back" 
+                    onClick={onBack}
+                    disabled={loading}
+                >
+                    ← Назад
+                </button>
+            </div>
+        </>
+    );
 };
 
 export default Teacher;

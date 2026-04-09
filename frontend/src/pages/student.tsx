@@ -10,24 +10,19 @@ type Props = {
 const Student = ({ onStart, onSettings, onHelp, onExit }: Props) => {
   return (
     <>
-      <div className="overlay"></div>
-
-      <div className="modal">
-        <h1>Режим ученика</h1>
-
-        <button className="btn" onClick={onStart}>
+      <div className="student-overlay"></div>
+      <div className="student-modal">
+        <h1 className="student-title">Режим ученика</h1>
+        <button className="student-btn" onClick={onStart}>
           Начать
         </button>
-
-        <button className="btn" onClick={onSettings}>
+        <button className="student-btn" onClick={onSettings}>
           Настройки
         </button>
-
-        <button className="btn" onClick={onHelp}>
+        <button className="student-btn" onClick={onHelp}>
           Справка
         </button>
-
-        <button className="btn" onClick={onExit}>
+        <button className="student-btn student-btn-exit" onClick={onExit}>
           ← Выход
         </button>
       </div>
